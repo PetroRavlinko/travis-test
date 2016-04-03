@@ -4,5 +4,5 @@ jdk:
 install: ./configure-mvn.sh
 after_success:
   - test "${TRAVIS_BRANCH}" == "master" && mvn clean
-  - test "${TRAVIS_BRANCH}" == "master" && mvn release:prepare
-  - test "${TRAVIS_BRANCH}" == "master" && mvn release:perform
+  - test "${TRAVIS_BRANCH}" == "master" && mvn -B release:prepare
+  - test "${TRAVIS_BRANCH}" == "master" && mvn -B release:perform
