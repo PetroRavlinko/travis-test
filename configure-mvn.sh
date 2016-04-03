@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 echo "Changing maven configuration"
 echo "Moving new settings.xml to /usr/local/maven/"
