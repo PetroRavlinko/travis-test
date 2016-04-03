@@ -5,7 +5,7 @@
     <groupId>gilbertojrequena</groupId>
     <artifactId>travis-test</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.4-SNAPSHOT</version>
+    <version>0.0.4</version>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -57,6 +57,7 @@
         <url>
             https://github.com/gilbertojrequena/travis-test
         </url>
+    <tag>travis-test-0.0.4</tag>
   </scm>
 
     <distributionManagement>
