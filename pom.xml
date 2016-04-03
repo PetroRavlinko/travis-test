@@ -64,7 +64,7 @@
         <repository>
             <id>bintray-gilbertojrequena-maven</id>
             <name>gilbertojrequena-maven</name>
-            <url>https://api.bintray.com/maven/gilbertojrequena/maven/util/;publish=1</url>
+            <url>https://api.bintray.com/maven/gilbertojrequena/maven/travis-test/;publish=1</url>
         </repository>
     </distributionManagement>
 
