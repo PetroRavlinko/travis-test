@@ -1,15 +1,15 @@
 #!/usr/bin/env sh
 
 echo "Changing maven configuration"
-echo "Moving new settings.xml to /usr/local/maven/"
+echo "Moving new settings.xml to MAVEN_HOME"
 
-sudo mv settings.xml $HOME/.m2/settings.xml
+mv settings.xml $HOME/.m2/settings.xml
 
-ls $HOME/.m2/
-
-echo "Print content of /usr/local/maven/"
-
-ls /usr/local/maven/
+echo "------------------------------------------------------------------------"
+echo "The new mvn settings are"
+echo "------------------------------------------------------------------------"
+cat $HOME/.m2/settings.xml
+echo "------------------------------------------------------------------------"
 
 echo "New Maven configuration DONE"
 
