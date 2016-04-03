@@ -11,8 +11,8 @@
     <servers>
         <server>
             <id>bintray-gilbertojrequena-maven</id>
-            <username>gilbertojrequena</username>
-            <password>7c6b5478bc789d43ee9da15dea67d6f8e70a1fd6</password>
+            <username>${env.BINTRAY_USER_NAME}</username>
+            <password>${env.BINTRAY_API_KEY}</password>
         </server>
     </servers>
 
