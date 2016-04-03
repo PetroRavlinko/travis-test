@@ -3,6 +3,6 @@ jdk:
   - oraclejdk8
 install: ./configure-build-node.sh
 after_success:
-  - test "${TRAVIS_BRANCH}" == "master" && mvn clean
-  - test "${TRAVIS_BRANCH}" == "master" && mvn -B release:prepare
-  - test "${TRAVIS_BRANCH}" == "master" && mvn -B release:perform
+  - mvn clean
+  - test "${TRAVIS_BRANCH}" == "master" && "${TRAVIS_TAG}" == "" mvn -B release:prepare
+  - test "${TRAVIS_BRANCH}" != "master" && "${TRAVIS_TAG}" != "" mvn -B release:perform
