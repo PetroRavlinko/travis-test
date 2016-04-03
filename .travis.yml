@@ -4,5 +4,5 @@ jdk:
 install: ./configure-build-node.sh
 after_success:
   - mvn clean
-  - test "${TRAVIS_BRANCH}" == "master" && mvn -B release:prepare
+  - test "${TRAVIS_BRANCH}" == "master" && ./prepare-release.sh
   - test "${TRAVIS_TAG}" != "" && mvn -B release:perform
