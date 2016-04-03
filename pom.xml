@@ -16,7 +16,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>gilbertojrequena</groupId>
+            <groupId>gilbertojrequen</groupId>
             <artifactId>util</artifactId>
             <version>1.0</version>
         </dependency>
