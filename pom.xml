@@ -37,7 +37,7 @@
                 <version>2.5.2</version>
                 <configuration>
                     <preparationGoals>clean install</preparationGoals>
-                    <username>${env.GIT_USER_NAME}</username>
+                    <username>${env.GIT_USER_ACCOUNT}</username>
                     <password>${env.GIT_PASSWORD}</password>
                     <tagBase>
                         https://github.com/gilbertojrequena/travis-test/tags
