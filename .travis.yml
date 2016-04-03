@@ -4,5 +4,5 @@ jdk:
 install: ./configure-build-node.sh
 after_success:
   - mvn clean
-  - test "${TRAVIS_BRANCH}" == "master" && ./prepare-release.sh
+  - test "${TRAVIS_BRANCH}" == "master" test echo $(git log -1 --oneline) != "[maven-release-plugin] prepare for next development iteration" && ./prepare-release.sh
   - test "${TRAVIS_TAG}" != "" && mvn -B release:perform
