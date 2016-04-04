@@ -20,25 +20,61 @@ mvn versions:commit
 echo "Pushing release $version to the master"
 git add pom.xml
 git commit -m "Release v${version}"
-git push origin master
+spawn push origin master
+
+expect username*
+send "${GIT_USER_ACCOUNT}"\r
+expect eof
+
+expect password*
+send "${GIT_PASSWORD}"\r
+expect eof
+
 echo "Pushing $version tag"
 git tag -a v${version} -m "Release of version ${version}"
-git push --tags
+spawn git push --tags
+
+expect username*
+send "${GIT_USER_ACCOUNT}"\r
+expect eof
+
+expect password*
+send "${GIT_PASSWORD}"\r
+expect eof
 
 echo "Creating tag"
-release_json='{ "tag_name": v'"${version}"', "target_commitish": "master", "name": v'"${version}"', "body": "Release of version '"${version}"'", "draft": false, "prerelease": false}'
-curl -u "${GIT_USER_ACCOUNT}:${GIT_PASSWORD}" -H "Content-Type: application/json" -X POST -d ${release_json} https://api.github.com/repos/"${GIT_USER_ACCOUNT}"/travis-test/releases
+release_json='{ "tag_name": "v'"${version}"'", "target_commitish": "master", "name": "v'"${version}"'", "body": "Release of version '"${version}"'", "draft": false, "prerelease": false}'
+echo "Releasing: ${release_json}"
+curl -u "${GIT_USER_ACCOUNT}:${GIT_PASSWORD}" -H "Content-Type: application/json" -X POST -d "${release_json}" https://api.github.com/repos/"${GIT_USER_ACCOUNT}"/travis-test/releases
+
+mvn deploy
 
 echo "Creating $version branch"
 git checkout -b ${version}
-git push origin ${version}
+spawn git push origin ${version}
+
+expect username*
+send "${GIT_USER_ACCOUNT}"\r
+expect eof
+
+expect password*
+send "${GIT_PASSWORD}"\r
+expect eof
 
 echo "Updating to the new ${version}-SNAPSHOT version"
 git checkout master
 mvn -B release:update-versions
 git add pom.xml
 git commit -m "Prepare for the next development version"
-git push origin master
+spawn git push origin master
+
+expect username*
+send "${GIT_USER_ACCOUNT}"\r
+expect eof
+
+expect password*
+send "${GIT_PASSWORD}"\r
+expect eof
 
 #Stop using release plugin
 #echo "mvn -B release:prepare"
