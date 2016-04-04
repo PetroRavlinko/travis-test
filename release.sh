@@ -26,7 +26,7 @@ git tag -a v${version} -m "Release of version ${version}"
 git push --tags
 
 echo "Creating tag"
-release_json='{ "tag_name": '"${version}"', "target_commitish": "master", "name": '"${version}"', "body": "Release of version '"${version}"'", "draft": false, "prerelease": false}'
+release_json='{ "tag_name": v'"${version}"', "target_commitish": "master", "name": v'"${version}"', "body": "Release of version '"${version}"'", "draft": false, "prerelease": false}'
 curl -u "${GIT_USER_ACCOUNT}:${GIT_PASSWORD}" -H "Content-Type: application/json" -X POST -d ${release_json} https://api.github.com/repos/"${GIT_USER_ACCOUNT}"/travis-test/releases
 
 echo "Creating $version branch"
