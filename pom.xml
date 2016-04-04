@@ -57,7 +57,7 @@
         <url>
             https://github.com/gilbertojrequena/travis-test
         </url>
-    <tag>HEAD</tag>
+    <tag>0.0.22-SNAPSHOT</tag>
   </scm>
 
     <distributionManagement>
