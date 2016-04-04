@@ -3,7 +3,7 @@
 echo "Starting build node configuration..."
 
 echo "Installing expect: apt-get install expect"
-apt-get install expect
+sudo apt-get install expect
 
 echo "Moving new settings.xml to MAVEN_HOME"
 
