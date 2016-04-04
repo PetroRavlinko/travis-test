@@ -2,7 +2,8 @@
 
 mvn clean
 git checkout master
+snapshotVersion=$(mvn help:evaluate -Dexpression=project.version | tail -8 | head -1)
+version=(${snapshotVersion//-/ })
 mvn -B release:prepare
-version=$(mvn help:evaluate -Dexpression=project.version | tail -8 | head -1)
-mvn release:branch -DbranchName=$version
+mvn release:branch -DbranchName=travis-test-$version[1]
 mvn -B release:perform
