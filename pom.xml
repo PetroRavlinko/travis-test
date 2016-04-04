@@ -42,6 +42,7 @@
                     <tagBase>
                         https://github.com/gilbertojrequena/travis-test/tags
                     </tagBase>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
                 </configuration>
             </plugin>
         </plugins>
