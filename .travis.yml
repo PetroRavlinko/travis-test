@@ -7,4 +7,3 @@ after_success:
   - export COMMIT_MESSAGE="$(git log -1 --oneline)"
   - echo $COMMIT_MESSAGE
   - test "${TRAVIS_BRANCH}" == "master" && test "${COMMIT_MESSAGE}" =~ "Make Release" && ./release.sh
-#  - test "${TRAVIS_TAG}" != "" && ./release.sh
