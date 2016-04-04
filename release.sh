@@ -20,27 +20,13 @@ mvn versions:commit
 echo "Pushing release $version to the master"
 git add pom.xml
 git commit -m "Release v${version}"
-spawn push origin master
-
-expect username*
-send "${GIT_USER_ACCOUNT}"\r
-expect eof
-
-expect password*
-send "${GIT_PASSWORD}"\r
-expect eof
+push origin master
+./github-credentials.exp
 
 echo "Pushing $version tag"
 git tag -a v${version} -m "Release of version ${version}"
-spawn git push --tags
-
-expect username*
-send "${GIT_USER_ACCOUNT}"\r
-expect eof
-
-expect password*
-send "${GIT_PASSWORD}"\r
-expect eof
+git push --tags
+./github-credentials.exp
 
 echo "Creating tag"
 release_json='{ "tag_name": "v'"${version}"'", "target_commitish": "master", "name": "v'"${version}"'", "body": "Release of version '"${version}"'", "draft": false, "prerelease": false}'
@@ -51,33 +37,13 @@ mvn deploy
 
 echo "Creating $version branch"
 git checkout -b ${version}
-spawn git push origin ${version}
-
-expect username*
-send "${GIT_USER_ACCOUNT}"\r
-expect eof
-
-expect password*
-send "${GIT_PASSWORD}"\r
-expect eof
+git push origin ${version}
+./github-credentials.exp
 
 echo "Updating to the new ${version}-SNAPSHOT version"
 git checkout master
 mvn -B release:update-versions
 git add pom.xml
 git commit -m "Prepare for the next development version"
-spawn git push origin master
-
-expect username*
-send "${GIT_USER_ACCOUNT}"\r
-expect eof
-
-expect password*
-send "${GIT_PASSWORD}"\r
-expect eof
-
-#Stop using release plugin
-#echo "mvn -B release:prepare"
-#mvn -B release:prepare
-#echo "mvn -B release:perform"
-#mvn -B release:perform
+git push origin master
+./github-credentials.exp
