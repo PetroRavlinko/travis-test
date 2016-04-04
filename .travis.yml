@@ -5,5 +5,5 @@ install: ./configure-build-node.sh
 after_success:
   - mvn clean
   - export COMMIT_MESSAGE="$(git log -1 --oneline)"
-  - test "${TRAVIS_BRANCH}" == "master" && [[ $COMMIT_MESSAGE =~ .*"[maven-release-plugin] prepare release travis-test-".* ]] && ./prepare-release.sh
-  - test "${TRAVIS_TAG}" != "" && mvn -B release:perform
+#  - test "${TRAVIS_BRANCH}" == "master" && [[ $COMMIT_MESSAGE =~ .*"[maven-release-plugin] prepare release travis-test-".* ]] && ./prepare-release.sh
+  - test "${TRAVIS_TAG}" != "" && ./release.sh
