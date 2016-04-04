@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-version=-1
-
 echo "mvn clean"
 mvn clean
 echo "git checkout master"
