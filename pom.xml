@@ -5,7 +5,7 @@
     <groupId>gilbertojrequena</groupId>
     <artifactId>travis-test</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.25-SNAPSHOT</version>
+    <version>0.0.25</version>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
