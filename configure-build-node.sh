@@ -1,6 +1,10 @@
 #!/usr/bin/env sh
 
 echo "Starting build node configuration..."
+
+echo "Installing expect: apt-get install expect"
+apt-get install expect
+
 echo "Moving new settings.xml to MAVEN_HOME"
 
 cp settings.xml $HOME/.m2/settings.xml
