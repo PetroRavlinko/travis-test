@@ -34,6 +34,7 @@ git checkout -b ${version}
 git push origin ${version}
 
 echo "Updating to the new ${version}-SNAPSHOT version"
+git checkout master
 mvn -B release:update-versions
 git add pom.xml
 git commit -m "Prepare for the next development version"
