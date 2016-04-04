@@ -31,35 +31,8 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.2</version>
-                <configuration>
-                    <preparationGoals>clean install</preparationGoals>
-                    <username>${env.GIT_USER_ACCOUNT}</username>
-                    <password>${env.GIT_PASSWORD}</password>
-                    <tagBase>
-                        https://github.com/gilbertojrequena/travis-test/tags
-                    </tagBase>
-                    <tagNameFormat>v@{project.version}</tagNameFormat>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
-
-    <scm>
-        <connection>
-            scm:git:https://github.com/gilbertojrequena/travis-test
-        </connection>
-        <developerConnection>
-            scm:git:https://github.com/gilbertojrequena/travis-test
-        </developerConnection>
-        <url>
-            https://github.com/gilbertojrequena/travis-test
-        </url>
-    <tag>HEAD</tag>
-  </scm>
 
     <distributionManagement>
         <repository>
