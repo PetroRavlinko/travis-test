@@ -9,5 +9,5 @@ set password [lindex $argv 3]
 spawn git push $remote $branch
 
 expect "?assword*"
-send \"$password\r\"
+send $password\r
 expect eof
