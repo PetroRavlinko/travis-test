@@ -6,8 +6,6 @@ set user [lindex $argv 0]
 set password [lindex $argv 1]
 
 spawn git push --tags
-expect "?sernam*"
-send \"$user\r\"
 
 expect "?assword*"
 send \"$password\r\"

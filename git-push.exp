@@ -7,8 +7,6 @@ set user [lindex $argv 2]
 set password [lindex $argv 3]
 
 spawn git push $remote $branch
-expect "?sernam*"
-send \"$user\r\"
 
 expect "?assword*"
 send \"$password\r\"
