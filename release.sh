@@ -23,11 +23,11 @@ mvn versions:commit
 echo "Pushing release $version to the master"
 git add pom.xml
 git commit -m "Release v${version}"
-expect -f ${pwd}/github-credentials.exp git push origin master
+expect -f ${pwd}/git-push.exp origin master
 
 echo "Pushing $version tag"
 git tag -a v${version} -m "Release of version ${version}"
-expect -f ${pwd}/github-credentials.exp git push --tags
+expect -f ${pwd}/git-tag.exp
 
 echo "Creating tag"
 release_json='{ "tag_name": "v'"${version}"'", "target_commitish": "master", "name": "v'"${version}"'", "body": "Release of version '"${version}"'", "draft": false, "prerelease": false}'
@@ -38,11 +38,11 @@ mvn deploy
 
 echo "Creating $version branch"
 git checkout -b ${version}
-expect -f ${pwd}/github-credentials.exp git push origin ${version}
+expect -f ${pwd}/git-push.exp origin ${version}
 
 echo "Updating to the new ${version}-SNAPSHOT version"
 git checkout master
 mvn -B release:update-versions
 git add pom.xml
 git commit -m "Prepare for the next development version"
-expect -f ${pwd}/github-credentials.exp git push origin master
+expect -f ${pwd}/git-push.exp origin master
