@@ -2,11 +2,13 @@
 
 set timeout -1
 
-spawn git push --tags
-expect username*
-send "${GIT_USER_ACCOUNT}"\r
-expect eof
+set user [lindex $argv 0]
+set password [lindex $argv 1]
 
-expect password*
-send "${GIT_PASSWORD}"\r
+spawn git push --tags
+expect "?sernam*"
+send \"$user\r\"
+
+expect "?assword*"
+send \"$password\r\"
 expect eof

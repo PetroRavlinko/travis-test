@@ -3,12 +3,13 @@
 set timeout -1
 set remote [lindex $argv 0]
 set branch [lindex $argv 1]
+set user [lindex $argv 2]
+set password [lindex $argv 3]
 
 spawn git push $remote $branch
-expect username*
-send "${GIT_USER_ACCOUNT}"\r
-expect eof
+expect "?sernam*"
+send \"$user\r\"
 
-expect password*
-send "${GIT_PASSWORD}"\r
+expect "?assword*"
+send \"$password\r\"
 expect eof

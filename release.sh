@@ -23,7 +23,7 @@ mvn versions:commit
 echo "Pushing release $version to the master"
 git add pom.xml
 git commit -m "Release v${version}"
-expect -f ${pwd}/git-push.exp origin master
+expect -f ${pwd}/git-push.exp origin master ${GIT_USER_ACCOUNT} ${GIT_PASSWORD}"
 
 echo "Pushing $version tag"
 git tag -a v${version} -m "Release of version ${version}"
