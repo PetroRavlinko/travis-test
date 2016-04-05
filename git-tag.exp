@@ -8,5 +8,5 @@ set password [lindex $argv 1]
 spawn git push --tags
 
 expect "?assword*"
-send \"$password\r\"
+send $password\r
 expect eof
