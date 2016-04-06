@@ -19,16 +19,15 @@ mvn versions:commit
 
 echo "Pushing release $version to the master"
 git add pom.xml
+echo "git commit -m 'Release v${version}'"
 git commit -m "Release v${version}"
-echo "Pushing release to master"
-git push --force --quiet "https://${GIT_TOKEN}@github.com/${GIT_USER_ACCOUNT}/travis-test.git" master > /dev/null 2>&1
-
-echo "Pushing v${version} tag"
+echo "Creating v${version} tag"
+echo "git tag -a v${version} -m 'Release of version ${version}'"
 git tag -a v${version} -m "Release of version ${version}"
-echo "Pushing release tag v${version}"
-git push --force --quiet "https://${GIT_TOKEN}@github.com/${GIT_USER_ACCOUNT}/travis-test.git" --tags > /dev/null 2>&1
+echo "Pushing release version and new tag"
+git push --force --quiet "https://${GIT_TOKEN}@github.com/${GIT_USER_ACCOUNT}/travis-test.git" master --tags > /dev/null 2>&1
 
-echo "Creating tag"
+echo "Publishing release of version ${version}"
 release_json='{ "tag_name": "v'"${version}"'", "target_commitish": "master", "name": "v'"${version}"'", "body": "Release of version '"${version}"'", "draft": false, "prerelease": false}'
 echo "Releasing: ${release_json}"
 curl -u "${GIT_USER_ACCOUNT}:${GIT_PASSWORD}" -H "Content-Type: application/json" -X POST -d "${release_json}" https://api.github.com/repos/"${GIT_USER_ACCOUNT}"/travis-test/releases
