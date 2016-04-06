@@ -6,4 +6,4 @@ install: ./configure-build-node.sh
 after_success:
   - mvn clean
   - export COMMIT_MESSAGE="$(git log -1 --oneline)"
-  - test "${TRAVIS_BRANCH}" == "master" && [[ $COMMIT_MESSAGE =~ .*"Make Release".* ]] && ./test-git-push.sh
+  - test "${TRAVIS_BRANCH}" == "master" && [[ $COMMIT_MESSAGE =~ .*"Make Release".* ]] && ./release.sh
