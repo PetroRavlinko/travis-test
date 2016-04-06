@@ -23,11 +23,16 @@ mvn versions:commit
 echo "Pushing release $version to the master"
 git add pom.xml
 git commit -m "Release v${version}"
-expect -f ${pwd}/git-push.exp origin master ${GIT_USER_ACCOUNT} ${GIT_PASSWORD}
+#expect -f ${pwd}/git-push.exp origin master ${GIT_USER_ACCOUNT} ${GIT_PASSWORD}
+echo "Pushing release to master"
+git push --force --quiet "https://${GIT_PASSWORD}@github.com/${GIT_USER_ACCOUNT}/travis-test.git" master > /dev/null 2>&1
 
 echo "Pushing $version tag"
 git tag -a v${version} -m "Release of version ${version}"
-expect -f ${pwd}/git-tag.exp ${GIT_USER_ACCOUNT} ${GIT_PASSWORD}
+#expect -f ${pwd}/git-tag.exp ${GIT_USER_ACCOUNT} ${GIT_PASSWORD}
+#git push --force --quiet "https://${GIT_PASSWORD}@${GIT_USER_ACCOUNT}" --tags > /dev/null 2>&1
+echo "Pushing release tag"
+git push --force --quiet "https://${GIT_PASSWORD}@github.com/${GIT_USER_ACCOUNT}/travis-test.git" --tags > /dev/null 2>&1
 
 echo "Creating tag"
 release_json='{ "tag_name": "v'"${version}"'", "target_commitish": "master", "name": "v'"${version}"'", "body": "Release of version '"${version}"'", "draft": false, "prerelease": false}'
@@ -38,11 +43,15 @@ mvn deploy
 
 echo "Creating $version branch"
 git checkout -b ${version}
-expect -f ${pwd}/git-push.exp origin ${version} ${GIT_USER_ACCOUNT} ${GIT_PASSWORD}
+#expect -f ${pwd}/git-push.exp origin ${version} ${GIT_USER_ACCOUNT} ${GIT_PASSWORD}
+echo "Pushing release branch"
+git push --force --quiet "https://${GIT_PASSWORD}@github.com/${GIT_USER_ACCOUNT}/travis-test.git" ${version} > /dev/null 2>&1
 
 echo "Updating to the new ${version}-SNAPSHOT version"
 git checkout master
 mvn -B release:update-versions
 git add pom.xml
 git commit -m "Prepare for the next development version"
-expect -f ${pwd}/git-push.exp origin master ${GIT_USER_ACCOUNT} ${GIT_PASSWORD}
+#expect -f ${pwd}/git-push.exp origin master ${GIT_USER_ACCOUNT} ${GIT_PASSWORD}
+echo "Pushing new development version"
+git push --force --quiet "https://${GIT_PASSWORD}@github.com/${GIT_USER_ACCOUNT}/travis-test.git" master > /dev/null 2>&1
