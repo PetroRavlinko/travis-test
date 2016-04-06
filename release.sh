@@ -23,9 +23,9 @@ git commit -m "Release v${version}"
 echo "Pushing release to master"
 git push --force --quiet "https://${GIT_TOKEN}@github.com/${GIT_USER_ACCOUNT}/travis-test.git" master > /dev/null 2>&1
 
-echo "Pushing $version tag"
+echo "Pushing v${version} tag"
 git tag -a v${version} -m "Release of version ${version}"
-echo "Pushing release tag"
+echo "Pushing release tag v${version}"
 git push --force --quiet "https://${GIT_TOKEN}@github.com/${GIT_USER_ACCOUNT}/travis-test.git" --tags > /dev/null 2>&1
 
 echo "Creating tag"
