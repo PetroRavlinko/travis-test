@@ -1,8 +1,5 @@
 #!/usr/bin/env sh
 
-pwd=$(pwd)
-echo "pwd = ${pwd}"
-
 echo "mvn clean"
 mvn clean
 echo "git checkout master"
