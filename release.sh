@@ -34,7 +34,7 @@ release_json='{ "tag_name": "v'"${version}"'", "target_commitish": "master", "na
 echo "Releasing: ${release_json}"
 curl -u "${GIT_USER_ACCOUNT}:${GIT_PASSWORD}" -H "Content-Type: application/json" -X POST -d "${release_json}" https://api.github.com/repos/"${GIT_USER_ACCOUNT}"/travis-test/releases
 
-mvn deploy
+mvn package deploy
 
 echo "Creating $version branch"
 git checkout -b ${version}
