@@ -21,8 +21,4 @@ echo "New Maven configuration... DONE"
 echo "Configuring git"
 git config --global user.email $GIT_USER_EMAIL
 git config --global user.name $GIT_USER_NAME
-echo "config --global credential.helper cache"
-git config --global credential.helper cache
-echo "config --global credential.helper 'cache --timeout=3600'"
-git config --global credential.helper 'cache --timeout=3600'
 echo "Git configuration... DONE"
