@@ -27,7 +27,7 @@ git tag -a v${version} -m "Release of version ${version}"
 echo "Pushing release version and new tag"
 git push --force --quiet "https://${GIT_TOKEN}@github.com/${GIT_USER_ACCOUNT}/travis-test.git" master --tags > /dev/null 2>&1
 
-sleep 15
+sleep 10
 
 echo "Publishing release of version ${version}"
 release_json='{ "tag_name": "v'"${version}"'", "target_commitish": "master", "name": "v'"${version}"'", "body": "Release of version '"${version}"'", "draft": false, "prerelease": false}'
