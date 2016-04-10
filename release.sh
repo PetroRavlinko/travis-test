@@ -41,6 +41,8 @@ git checkout -b ${version}
 echo "Pushing release branch"
 git push --force --quiet "https://${GIT_TOKEN}@github.com/${GIT_USER_ACCOUNT}/travis-test.git" ${version} > /dev/null 2>&1
 
+mvn clean deploy
+
 echo "Updating to the new ${version}-SNAPSHOT version"
 git checkout master
 mvn -B release:update-versions
