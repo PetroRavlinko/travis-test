@@ -5,7 +5,7 @@
     <groupId>gilbertojrequena</groupId>
     <artifactId>travis-test</artifactId>
     <packaging>jar</packaging>
-    <version>0.0.46</version>
+    <version>0.0.47-SNAPSHOT</version>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
